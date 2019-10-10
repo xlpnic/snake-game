@@ -7,12 +7,13 @@ function setup() {
   createCanvas(600, 600);
   snake = new Snake()
   frameRate(15);
-  pickLocation();
+  pickFoodLocation();
 }
 
-function pickLocation(){
+function pickFoodLocation(){
   var cols = floor(width/scl);
   var rows = floor(height/scl);
+  //TODO: Check that food position is not part of snake's body.
   food = createVector(floor(random(cols)), floor(random(rows)));
   food.mult(scl);
 }
@@ -24,7 +25,7 @@ function draw() {
   snake.show();
 
   if(snake.eat(food)){
-    pickLocation();
+    pickFoodLocation();
   }
 
   fill(255, 0, 100);
